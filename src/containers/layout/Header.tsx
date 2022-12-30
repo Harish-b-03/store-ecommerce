@@ -4,7 +4,7 @@ import PersonIcon from "../../assets/icons/PersonIcon"
 
 const Header = () => {
   return (
-    <header className="fixed w-full h-70px px-20 flex justify-between items-center bg-white border-b-2 border-b-neutral-200">
+    <header className="fixed top-0 w-full h-70px px-20 z-50 flex justify-between items-center bg-white border-b-2 border-b-neutral-200">
       <div className="flex justify-between items-center">
         <div className="mr-5 text-2xl font-lekton font-semibold tracking-tight cursor-pointer">Store.</div>
         <div className="ml-8 flex justify-center items-center">
