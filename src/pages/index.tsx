@@ -4,6 +4,7 @@ import styles from '../assets/styles/Home.module.css'
 import Layout from '../containers/layout/Layout'
 import { GetServerSideProps, NextPage } from 'next'
 import HeroBanner from '../components/HeroBanner'
+import Categories from '../components/Categories'
 
 type HomeProps = {
   categories: string[],
@@ -35,11 +36,7 @@ const Home:NextPage<HomeProps> = ({ categories, featuredProduct }) => {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lekton&display=swap" rel="stylesheet"></link>
       </Head>
       <HeroBanner featuredProduct={featuredProduct}/>
-      <div>
-        {/* {
-          categories.map((category)=> {return <div key={category}>{category}</div>})
-        } */}
-      </div>
+      <Categories/>
     </Layout>
   )
 }
