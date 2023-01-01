@@ -1,13 +1,9 @@
 const CartIcon = ({
   color = 'currentColor',
-  width = '30px',
-  height = '30px',
   ...props
 }) => {
   return (
     <svg 
-        width={width}
-        height={height}
         viewBox="0 0 64 64" 
         xmlns="http://www.w3.org/2000/svg" 
         stroke-width="3" 
