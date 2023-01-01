@@ -33,6 +33,7 @@ const HeroBanner:React.FC<HeroBannerProps> = ({ featuredProduct }) => {
                     src={featuredProduct.thumbnail}
                     alt={featuredProduct.title}
                     fill
+                    priority
                     className="object-contain"
                     />
             </div>
