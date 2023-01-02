@@ -7,7 +7,15 @@ const ActiveLink = ({children, href, activeClassName, props}: any) => {
     const child = Children.only(children)
     const childClassName = child.props.className || "";
 
-    const className = pathname === href? `${childClassName} ${activeClassName}` : childClassName;
+    let className = pathname === href? `${childClassName} ${activeClassName}` : childClassName;
+    
+    // special case/check for "products" page and "shop" tab
+    // will make "shop" tab active for paths: "/product/*"
+    if(href === "/product"){
+        if(pathname.startsWith("/product")){
+            className = `${childClassName} ${activeClassName}`
+        }
+    }
     console.log(pathname, href)
     return (
         <Link href={href} {...props}>
