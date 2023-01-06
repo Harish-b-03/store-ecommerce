@@ -5,6 +5,7 @@ import ClothingImage from "../../public/images/Clothing.jpeg" //import image sta
 import GadgetsImage from "../../public/images/Gadgets.jpeg"
 import AccessoriesImage from "../../public/images/Accessories.jpeg"
 import GroceriesImage from "../../public/images/Groceries.jpeg"
+import Link from "next/link";
 // for image load https://nextjs.org/docs/basic-features/image-optimization#local-images
 
 const CategoriesList:{title:string, image:StaticImageData}[] = [
@@ -60,6 +61,7 @@ const Categories = () => {
                     {
                         CategoriesList.map((item)=>{
                             return(
+                              <Link href={`/product/category/${item.title}`}>
                                 <div key={item.title} className="w-[230px] h-[250px] bg-slate-300 cursor-pointer relative text-2xl text-[rgba(0,0,0,0.7)] font-bold tracking-wide hover:text-[rgba(0,0,0,1)] hover:bg-slate-400 hover:tracking-wider transition-all overflow-hidden">
                                     <div className="w-[230px] h-[250px] mix-blend-lighten relative">
                                         <Image
@@ -73,6 +75,7 @@ const Categories = () => {
                                     </div>
                                     <span className="absolute bg-white top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">{item.title}</span>
                                 </div>
+                              </Link>
                             )
                         })
                     }

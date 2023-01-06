@@ -42,8 +42,6 @@ export const getStaticPaths: GetStaticPaths =async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
     
-    console.log(context)
-    
     if(context.params !== undefined){
     
     let productDetail:Array<{"category":string, "products":object}> = [];
