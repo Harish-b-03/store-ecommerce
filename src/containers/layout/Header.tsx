@@ -5,21 +5,21 @@ import ActiveLink from "../../components/ActiveLink"
 
 const Header = () => {
   return (
-    <header className="fixed top-0 w-full h-70px px-5 lg:px-20 z-50 flex justify-between items-center bg-white border-b-2 border-b-neutral-200">
+    <header className="fixed top-0 w-full h-70px px-5 lg:px-10 z-50 flex justify-between items-center transition-all ease-in-out duration-300 text-gray-3a bg-white border-b-2 border-b-neutral-100">
       <div className="flex justify-between items-center">
         <div className="mr-3 lg:mr-5 text-2xl font-lekton font-semibold tracking-tight cursor-pointer">Store.</div>
         <div className=" ml-3 lg:ml-8 flex justify-center items-centertext-gray-3a">
           <ActiveLink href="/" activeClassName="text-violet-500 font-semibold">
-            <div className="w-60px md:w-80px lg:mr-0.5  tracking-wide flex justify-center items-center cursor-pointer hover:font-semibold hover:text-violet-500">Home</div>
+            <div className="w-60px md:w-80px lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal hover:font-semibold hover:text-violet-500">Home</div>
           </ActiveLink>
           <ActiveLink href="/product" activeClassName="text-violet-500 font-semibold">
-            <div className="w-60px md:w-80px lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:font-semibold hover:text-violet-500">Shop</div>
+            <div className="w-60px md:w-80px lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal hover:font-semibold hover:text-violet-500">Shop</div>
           </ActiveLink>
           <ActiveLink href="/blog" activeClassName="text-violet-500 font-semibold">
-            <div className="w-60px md:w-80px lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:font-semibold hover:text-violet-500">Blog</div>
+            <div className="w-60px md:w-80px lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal hover:font-semibold hover:text-violet-500">Blog</div>
           </ActiveLink>
           <ActiveLink href="/about" activeClassName="text-violet-500 font-semibold">
-            <div className="w-60px md:w-80px lg:mr-2 tracking-wide flex justify-center items-center cursor-pointer hover:font-semibold hover:text-violet-500">About</div>
+            <div className="w-60px md:w-80px lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal  hover:font-semibold hover:text-violet-500">About</div>
           </ActiveLink>
         </div>
       </div>
