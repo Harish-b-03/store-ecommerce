@@ -1,18 +1,8 @@
 import Image from "next/image"
+import { ResultObject } from "../pages"
+
 type HeroBannerProps = {
-    featuredProduct: {
-        id: number,
-        title: string,
-        description: string,
-        price: number,
-        brand: string,
-        category: string,
-        discountPercentage: number,
-        images: string[],
-        rating: number,
-        stock: number,
-        thumbnail: string,
-    },
+    featuredProduct: ResultObject,
 }
 
 const HeroBanner:React.FC<HeroBannerProps> = ({ featuredProduct }) => {

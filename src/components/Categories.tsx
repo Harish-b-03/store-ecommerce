@@ -40,7 +40,7 @@ const responsive = {
 const Categories = () => {
 
   return (
-    <div className="mt-10 mb-10 h-[400px] ">
+    <div className="mt-10 mb-10 h-[300px]">
         
         <div className="text-xl font-bold text-black tracking-wider">Shop by Category</div>
 
