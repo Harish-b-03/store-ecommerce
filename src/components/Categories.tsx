@@ -17,11 +17,11 @@ const CategoriesList:{title:string, image:StaticImageData}[] = [
 const responsive = {
     xl: {
         breakpoint: {max: 1536, min: 1281},
-        items: 3
+        items: 4
     },
     lg: {
       breakpoint: { max: 1280, min: 1025 },
-      items: 3
+      items: 4
     },
     md: {
       breakpoint: { max: 1024, min: 769 },
@@ -42,9 +42,9 @@ const Categories = () => {
   return (
     <div className="mt-10 mb-10 h-[400px] ">
         
-        <div className="px-5 text-xl font-bold text-[rgba(0,0,0,0.75)] tracking-wider">Shop by Categories</div>
+        <div className="text-xl font-bold text-black tracking-wider">Shop by Category</div>
 
-        <div className="w-full my-8 pb-4 flex justify-center items-center relative">
+        <div className="w-full my-6 pb-4 flex justify-center items-center relative">
             <Carousel 
                 swipeable={true}
                 draggable={true}
@@ -57,13 +57,13 @@ const Categories = () => {
                 responsive={responsive} 
                 renderDotsOutside={true}
                 rewind={true}
-                className="w-[90%] flex justify-start items-center">
+                className="w-[100%] flex justify-start items-center">
                     {
-                        CategoriesList.map((item)=>{
+                        CategoriesList.map((item, index)=>{
                             return(
-                              <Link href={`/product/category/${item.title}`}>
-                                <div key={item.title} className="w-[230px] h-[250px] bg-slate-300 cursor-pointer relative text-2xl text-[rgba(0,0,0,0.7)] font-bold tracking-wide hover:text-[rgba(0,0,0,1)] hover:bg-slate-400 hover:tracking-wider transition-all overflow-hidden">
-                                    <div className="w-[230px] h-[250px] mix-blend-lighten relative">
+                              <Link key={index} href={`/product/category/${item.title}`}>
+                                <div key={item.title} className="w-[200px] h-[220px] bg-slate-300 cursor-pointer relative text-2xl text-[rgba(0,0,0,0.7)] font-bold tracking-wide hover:text-[rgba(0,0,0,1)] hover:bg-slate-400 hover:tracking-wider transition-all overflow-hidden">
+                                    <div className="w-[200px] h-[220px] mix-blend-lighten relative">
                                         <Image
                                             src={item.image}
                                             alt={item.title}
