@@ -9,10 +9,22 @@ import Link from "next/link";
 // for image load https://nextjs.org/docs/basic-features/image-optimization#local-images
 
 const CategoriesList:{title:string, image:StaticImageData}[] = [
-    {title: "Electronics", image: GadgetsImage}, 
-    {title: "Jewelery", image: AccessoriesImage}, 
-    {title: "Men", image: ClothingImage}, 
-    {title: "Women", image: ClothingImage}
+    {
+      title: "Electronics", 
+      image: GadgetsImage
+    }, 
+    {
+      title: "Jewelery", 
+      image: AccessoriesImage
+    }, 
+    {
+      title: "Men", 
+      image: ClothingImage
+    }, 
+    {
+      title: "Women", 
+      image: ClothingImage
+    }
   ]
 
 const responsive = {
@@ -41,15 +53,39 @@ const responsive = {
 const Categories = () => {
 
   return (
-    <div className="mt-10 mb-10 h-[300px]">
+    <div className="my-14 h-[300px]">
         
-        <div className="text-xl font-bold text-black tracking-wider">Shop by Category</div>
+        <div className="px-5 text-xl font-bold text-black tracking-wider">Shop by Category</div>
 
-        <div className="w-full my-6 pb-4 flex justify-center items-center relative">
-            <Carousel 
+        <div className="w-full my-10 pb-4 flex justify-center items-center relative">
+            <div className="w-full h-fit max-w-5xl flex flex-row justify-between items-center">
+              {
+                CategoriesList.map((item, index)=>{
+                    return(
+                      <Link key={index} href={`/product/category/${item.title}`} className="w-fit h-fit ">
+                        <div key={item.title} className="w-[200px] h-[220px] bg-slate-300 cursor-pointer relative text-2xl text-[rgba(0,0,0,0.7)] font-bold tracking-wide hover:text-[rgba(0,0,0,1)] hover:bg-slate-400 hover:tracking-wider transition-all overflow-hidden">
+                            <div className="w-[200px] h-[220px] mix-blend-lighten relative">
+                                <Image
+                                    src={item.image}
+                                    alt={item.title}
+                                    placeholder="blur" // https://nextjs.org/docs/api-reference/next/image#placeholder
+                                    fill
+                                    priority
+                                    className="w-full h-full object-cover scale-125"
+                                />
+                            </div>
+                            <span className="absolute bg-white top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">{item.title}</span>
+                        </div>
+                      </Link>
+                    )
+                })
+              }
+            </div>
+            
+            {/* <Carousel 
                 swipeable={true}
                 draggable={true}
-                showDots={true}
+                showDots={false}
                 ssr={true}
                 infinite={false}
                 keyBoardControl={true}
@@ -58,11 +94,11 @@ const Categories = () => {
                 responsive={responsive} 
                 renderDotsOutside={true}
                 rewind={true}
-                className="w-[100%] flex justify-start items-center">
+                className="w-full flex flex-row justify-between items-center">
                     {
                         CategoriesList.map((item, index)=>{
                             return(
-                              <Link key={index} href={`/product/category/${item.title}`}>
+                              <Link key={index} href={`/product/category/${item.title}`} className="w-fit h-fit ">
                                 <div key={item.title} className="w-[200px] h-[220px] bg-slate-300 cursor-pointer relative text-2xl text-[rgba(0,0,0,0.7)] font-bold tracking-wide hover:text-[rgba(0,0,0,1)] hover:bg-slate-400 hover:tracking-wider transition-all overflow-hidden">
                                     <div className="w-[200px] h-[220px] mix-blend-lighten relative">
                                         <Image
@@ -80,7 +116,7 @@ const Categories = () => {
                             )
                         })
                     }
-            </Carousel>
+            </Carousel> */}
         </div>
     </div>
   )

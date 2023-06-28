@@ -34,8 +34,8 @@ const Home:NextPage<HomeProps> = ({ categories, featuredProduct, bestSellers }) 
   console.log(featuredProduct, categories)
   return (
     <Layout>
-      {/* <HeroBanner featuredProduct={featuredProduct}/>
-      <Categories/> */}
+      <HeroBanner featuredProduct={featuredProduct}/>
+      <Categories/>
       <BestSellers products={bestSellers}/>
     </Layout>
   )
@@ -45,9 +45,9 @@ export const getServerSideProps:GetServerSideProps = async (context) => {
   const res_categories = await fetch("https://fakestoreapi.com/products/categories");
   const categories:String[] = await res_categories.json();
 
-  const res_featuredProduct = await fetch("https://fakestoreapi.com/products/10");
+  const res_featuredProduct = await fetch("https://fakestoreapi.com/products/7");
   const featuredProduct:Object = await res_featuredProduct.json();
-  
+
   const res_jewelery = await fetch("https://fakestoreapi.com/products/category/jewelery?limit=4");
   const jewelery:any = await res_jewelery.json();
 
