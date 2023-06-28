@@ -5,6 +5,7 @@ import { GetServerSideProps, NextPage } from 'next'
 import HeroBanner from '../components/HeroBanner'
 import Categories from '../components/Categories'
 import BestSellers from '../components/BestSellers'
+import { GET_ALL_CATEGORIES, GET_BY_CATEGORY, GET_BY_PRODUCT_ID } from '../constants'
 
 export type ProductType = {
   id: number,
@@ -42,22 +43,22 @@ const Home:NextPage<HomeProps> = ({ categories, featuredProduct, bestSellers }) 
 }
 
 export const getServerSideProps:GetServerSideProps = async (context) => {
-  const res_categories = await fetch("https://fakestoreapi.com/products/categories");
+  const res_categories = await fetch(GET_ALL_CATEGORIES);
   const categories:String[] = await res_categories.json();
 
-  const res_featuredProduct = await fetch("https://fakestoreapi.com/products/7");
+  const res_featuredProduct = await fetch(`${GET_BY_PRODUCT_ID}/7`);
   const featuredProduct:Object = await res_featuredProduct.json();
 
-  const res_jewelery = await fetch("https://fakestoreapi.com/products/category/jewelery?limit=4");
+  const res_jewelery = await fetch(`${GET_BY_CATEGORY}/jewelery?limit=4`);
   const jewelery:any = await res_jewelery.json();
 
-  const res_electronic = await fetch("https://fakestoreapi.com/products/category/electronics?limit=4");
+  const res_electronic = await fetch(`${GET_BY_CATEGORY}/electronics?limit=4`);
   const electronic:any = await res_electronic.json();
 
-  const res_womensDresses = await fetch("https://fakestoreapi.com/products/category/women's clothing?limit=4");
+  const res_womensDresses = await fetch(`${GET_BY_CATEGORY}/women's clothing?limit=4`);
   const womensDresses:any = await res_womensDresses.json();
 
-  const res_mensDresses = await fetch("https://fakestoreapi.com/products/category/men's clothing?limit=4");
+  const res_mensDresses = await fetch(`${GET_BY_CATEGORY}/men's clothing?limit=4`);
   const mensDresses:any = await res_mensDresses.json();
 
   const bestSellers = {

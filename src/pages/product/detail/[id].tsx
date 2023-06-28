@@ -6,6 +6,7 @@ import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { ProductType } from '../..'
 import { Router, useRouter } from 'next/router'
+import { GET_BY_PRODUCT_ID } from '../../../constants'
 
 const responsive = {
   xl: {
@@ -46,7 +47,7 @@ const index:React.FC<{
   return (
     <Layout>
       <div className="w-full h-fit flex justify-center items-center">
-        <div className='my-20 w-full h-full max-w-6xl flex justify-between items-center'>
+        <div className='my-20 w-full h-full max-w-6xl flex justify-between items-start'>
           <div className='w-[45%] h-full flex flex-col justify-center items-center'>
             <div className='relative p-10 w-full h-[400px] flex justify-center items-center rounded-2xl bg-slate-100 overflow-hidden'>
               <img
@@ -80,9 +81,9 @@ const index:React.FC<{
             <div className='w-[90%] text-2xl font-semibold'>{product.title}</div>
             <div className='mt-5 text-base font-semibold'>Details:</div>
             <div className='w-[85%] mt-2 text-base break-all text-gray-3a'>{product.description}</div>
-            <div className='mt-5 flex flex-col justify-center'>
+            <div className='mt-5 w-full max-w-[200px] flex justify-between items-center'>
               <span className='text-2xl font-semibold text-violet-500'>&#36; {product.price}</span>
-              <span className='mt-4 flex items-center'>
+              <span className='flex justify-center items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" className="w-5 h-5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
@@ -133,7 +134,7 @@ export const getStaticPaths: GetStaticPaths =async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
 
   if(context.params !== undefined){
-    const res_product = await fetch(`https://fakestoreapi.com/products/${context.params.id}`);
+    const res_product = await fetch(`${GET_BY_PRODUCT_ID}/${context.params.id}`);
     const product:ProductType = await res_product.json();
 
     return {
