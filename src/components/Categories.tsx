@@ -9,10 +9,11 @@ import Link from "next/link";
 // for image load https://nextjs.org/docs/basic-features/image-optimization#local-images
 
 const CategoriesList:{title:string, image:StaticImageData}[] = [
-    {title: "Clothing", image: ClothingImage}, 
-    {title: "Gadgets", image: GadgetsImage}, 
-    {title: "Accessories", image: AccessoriesImage}, 
-    {title: "Groceries", image: GroceriesImage}]
+    {title: "Electronics", image: GadgetsImage}, 
+    {title: "Jewelery", image: AccessoriesImage}, 
+    {title: "Men", image: ClothingImage}, 
+    {title: "Women", image: ClothingImage}
+  ]
 
 const responsive = {
     xl: {

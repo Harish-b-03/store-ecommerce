@@ -6,64 +6,69 @@ import HeroBanner from '../components/HeroBanner'
 import Categories from '../components/Categories'
 import BestSellers from '../components/BestSellers'
 
-export type ResultObject = {
+export type ProductType = {
   id: number,
   title: string,
   description: string,
   price: number,
-  brand: string,
   category: string,
-  discountPercentage: number,
-  images: string[],
-  rating: number,
-  stock: number,
-  thumbnail: string,
+  image: string,
+  rating: {
+    rate: number, 
+    count: number
+  }
 }
 
-type HomeProps = {
+export type HomeProps = {
   categories: string[],
-  featuredProduct: ResultObject,
-  bestSeller_products: {
-    "Tops": ResultObject[],
-    "MensShirt": ResultObject[],
-    "WomensDresses": ResultObject[],
-  },
+  featuredProduct: ProductType,
+  bestSellers: {
+    "jewelery": ProductType[],
+    "electronic": ProductType[],
+    "mensClothing": ProductType[],
+    "womensClothing": ProductType[]
+  }
 }
 
-const Home:NextPage<HomeProps> = ({ categories, featuredProduct, bestSeller_products }) => {
-  console.log(bestSeller_products)
+const Home:NextPage<HomeProps> = ({ categories, featuredProduct, bestSellers }) => {
+  console.log(featuredProduct, categories)
   return (
     <Layout>
-      <HeroBanner featuredProduct={featuredProduct}/>
-      <Categories/>
-      <BestSellers products={bestSeller_products}/>
+      {/* <HeroBanner featuredProduct={featuredProduct}/>
+      <Categories/> */}
+      <BestSellers products={bestSellers}/>
     </Layout>
   )
 }
 
 export const getServerSideProps:GetServerSideProps = async (context) => {
-  const res_categories = await fetch("https://dummyjson.com/products/categories");
+  const res_categories = await fetch("https://fakestoreapi.com/products/categories");
   const categories:String[] = await res_categories.json();
 
-  const res_featuredProduct = await fetch("https://dummyjson.com/products/100"); // 8, 12, 13. 15, 53, 60, 61, 62
+  const res_featuredProduct = await fetch("https://fakestoreapi.com/products/10");
   const featuredProduct:Object = await res_featuredProduct.json();
+  
+  const res_jewelery = await fetch("https://fakestoreapi.com/products/category/jewelery?limit=4");
+  const jewelery:any = await res_jewelery.json();
 
-  const res_tops = await fetch("https://dummyjson.com/products/category/tops");
-  const tops:any = await res_tops.json();
+  const res_electronic = await fetch("https://fakestoreapi.com/products/category/electronics?limit=4");
+  const electronic:any = await res_electronic.json();
 
-  const res_mensShirt = await fetch("https://dummyjson.com/products/category/mens-shirts");
-  const mensShirt:any = await res_mensShirt.json();
-
-  const res_womensDresses = await fetch("https://dummyjson.com/products/category/womens-dresses");
+  const res_womensDresses = await fetch("https://fakestoreapi.com/products/category/women's clothing?limit=4");
   const womensDresses:any = await res_womensDresses.json();
 
-  const bestSeller_products = {
-    "Tops": tops.products,
-    "MensShirt": mensShirt.products,
-    "WomensDresses": womensDresses.products,
-  }
+  const res_mensDresses = await fetch("https://fakestoreapi.com/products/category/men's clothing?limit=4");
+  const mensDresses:any = await res_mensDresses.json();
 
-  return { props: {categories, featuredProduct, bestSeller_products}}
+  const bestSellers = {
+    "jewelery": jewelery,
+    "electronic": electronic,
+    "mensClothing": mensDresses,
+    "womensClothing": womensDresses
+  }
+  
+  
+  return { props: {categories, featuredProduct, bestSellers}}
 }
 
 export default Home;
