@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import Layout from '../../../containers/layout/Layout'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Image from 'next/image'
@@ -7,6 +7,7 @@ import 'react-multi-carousel/lib/styles.css'
 import { ProductType } from '../..'
 import { Router, useRouter } from 'next/router'
 import { GET_BY_PRODUCT_ID } from '../../../constants'
+import { CartContext } from '../../../contexts/Cart/CartProvider'
 
 const responsive = {
   xl: {
@@ -39,9 +40,9 @@ const index:React.FC<{
     const router = useRouter();
     router.push("/");
   }
-
+  const { addItem, toggleCart } = useContext(CartContext)
   const [quantity, setquantity] = useState(1)
-  const [focusImage, setfocusImage] = useState(product.image)
+  const [focusImage, setfocusImage] = useState(product.image) // ToDo: make it to handle if it has other than one image
   const images = [ product.image, product.image, product.image, product.image, product.image, product.image ] // simulating array of images
 
   return (
@@ -104,10 +105,19 @@ const index:React.FC<{
               </div>
             </div>
             <div className='mt-16 w-[90%] flex justify-between items-center'>
-              <button className='w-5/12 h-[50px] font-semibold text-violet-500 border-[1px] border-violet-500 rounded-md'>
+              <button 
+                onClick={() => addItem(product, quantity)}
+                className='w-5/12 h-[50px] font-semibold text-violet-500 border-[1px] border-violet-500 rounded-md'
+              >
                 Add to Cart
               </button>
-              <button className='w-5/12 h-[50px] mr-5 font-semibold text-white bg-violet-500 border-2 border-violet-500 rounded-md'>
+              <button 
+                onClick={() => {
+                  addItem(product, quantity);
+                  toggleCart();
+                }}
+                className='w-5/12 h-[50px] mr-5 font-semibold text-white bg-violet-500 border-2 border-violet-500 rounded-md'
+              >
                 Buy Now
               </button>
             </div>

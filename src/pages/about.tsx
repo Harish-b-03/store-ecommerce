@@ -3,7 +3,7 @@ import Layout from "../containers/layout/Layout"
 const about = () => {
   return (
     <Layout>
-        <div>about</div>
+      <div>about</div>
     </Layout>
   )
 }

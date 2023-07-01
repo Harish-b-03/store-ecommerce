@@ -1,6 +1,7 @@
 import Head from "next/head"
 import Footer from "./Footer"
 import Header from "./Header"
+import Cart from "../../components/Cart"
 
 const Layout = (props:any) => {
   return (
@@ -20,6 +21,7 @@ const Layout = (props:any) => {
           {props.children}
         </div>
         <Footer/>
+        <Cart/>
       </main>
     </div>
   )

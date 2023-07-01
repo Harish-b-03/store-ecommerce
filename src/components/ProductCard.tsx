@@ -1,8 +1,9 @@
 import Image from "next/image"
 import { ProductType } from "../pages"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import FavouriteIcon from "../assets/icons/FavouriteIcon"
 import Link from "next/link"
+import { CartContext } from "../contexts/Cart/CartProvider"
 
 const ProductCard:React.FC<
     {
@@ -11,7 +12,8 @@ const ProductCard:React.FC<
 > = ({ product }) => {
     const [showOptions, setShowOptions] = useState(false);
     const productDetailURL = `/product/detail/${product.id}`;
-    
+    const {addItem} = useContext(CartContext);
+
     return (
         <div
             onMouseEnter={()=>setShowOptions(true)}
@@ -28,7 +30,12 @@ const ProductCard:React.FC<
                 </Link>
 
                 <div className={`h-full absolute top-[1px] ${(showOptions)?'right-[1px]':'-right-full scale-0 pointer-events-none opacity-0'}  text-gray-500 flex flex-col justify-between items-center overflow-hidden transition-all duration-300`}>
-                    <button className="my-2 p-2 text-black bg-gray-100 rounded-md border border-gray-300 hover:bg-gray-800 hover:text-white">
+                    <button
+                        onClick={()=>{
+                            addItem(product)
+                        }} 
+                        className="my-2 p-2 text-black bg-gray-100 rounded-md border border-gray-300 hover:bg-gray-800 hover:text-white"
+                    >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
