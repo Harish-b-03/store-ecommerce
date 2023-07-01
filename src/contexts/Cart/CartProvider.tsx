@@ -11,7 +11,7 @@ export interface CartStateType{
 }
 
 const INITIAL_CART_STATE:CartStateType = {
-    isOpen: true,
+    isOpen: false,
     items: [],
     totalAmount: 0,
 };
