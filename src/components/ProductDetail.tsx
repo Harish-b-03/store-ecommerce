@@ -5,16 +5,16 @@ import StarIcon from "./icons/StarIcon";
 import BuyNowButton from "./BuyNowButton";
 
 const ProductDetail = ({ product }: { product: ProductType }) => {
-	const { addItem, toggleCart } = useContext(CartContext);
+	const { addItem } = useContext(CartContext);
 	const [quantity, setquantity] = useState(1);
 
 	return (
-		<div className="w-[45%] h-fit flex flex-col justify-evenly items">
-			<div className="w-[90%] text-2xl font-semibold">
+		<div className="mt-10 md:mt-0 px-5 md:px-0 w-full md:w-[45%] h-fit flex flex-col justify-evenly items-center">
+			<div className="md:w-[90%] text-2xl text-center md:text-left font-semibold">
 				{product.title}
 			</div>
 			<div className="mt-5 text-base font-semibold">Details:</div>
-			<div className="w-[85%] mt-2 text-base break-all text-gray-3a">
+			<div className="md:w-[85%] mt-2 text-base break-all text-gray-3a">
 				{product.description}
 			</div>
 			<div className="mt-5 w-full max-w-[200px] flex justify-between items-center">

@@ -19,8 +19,8 @@ const ProductDetailPage: React.FC<{
 	return (
 		<Layout>
 			<div className="w-full h-fit flex justify-center items-center">
-				<div className="my-20 w-full h-full max-w-6xl flex justify-between items-start">
-					<div className="w-[45%] h-full flex flex-col justify-center items-center">
+				<div className="my-10 md:my-20 w-full h-full max-w-6xl flex flex-col md:flex-row justify-between items-start">
+					<div className="w-full md:w-[45%] h-full flex flex-col justify-center items-center">
 						<div className="relative p-10 w-full h-[400px] flex justify-center items-center rounded-2xl bg-slate-100 overflow-hidden">
 							<img
 								src={focusImage}

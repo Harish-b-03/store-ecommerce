@@ -13,7 +13,7 @@ const CartCard: React.FC<{
 		<div
 			onMouseEnter={() => setShowDeleteIcon(true)}
 			onMouseLeave={() => setShowDeleteIcon(false)}
-			className="relative my-2 mx-1 w-full max-w-md h-fit flex justify-center items-center"
+			className="relative my-2 mx-1 w-full md:max-w-md h-fit flex justify-center items-center"
 		>
 			<div className="w-1/3 max-w-[100px] p-3 ">
 				<img
@@ -45,8 +45,8 @@ const CartCard: React.FC<{
 				</div>
 			</div>
 			<button
-				className={`absolute top-4 right-2 ${
-					showDeleteIcon ? "" : "opacity-0 pointer-events-none"
+				className={`absolute top-3 md:top-5 right-3 ${
+					showDeleteIcon ? "" : "md:opacity-0 md:pointer-events-none"
 				} text-gray-600 hover:text-black transition-all duration-300`}
 				onClick={() => deleteItem(product)}
 			>

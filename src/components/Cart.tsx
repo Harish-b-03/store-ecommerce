@@ -14,8 +14,8 @@ const Cart = () => {
 					className={`absolute top-0 ${
 						isOpen
 							? "right-0"
-							: "-right-1/2 opacity-0 pointer-events-none"
-					} w-2/5 h-screen flex flex-col justify-between items-center bg-white transition-all duration-500`}
+							: "-right-full md:-right-1/2 opacity-0 pointer-events-none"
+					} w-full md:w-2/5 h-screen flex flex-col justify-between items-center bg-white transition-all duration-500`}
 				>
 					<div className="relative w-full h-fit py-5 flex justify-center items-center border-b border-gray-400">
 						<span className="font-semibold text-gray-600">
@@ -23,7 +23,7 @@ const Cart = () => {
 						</span>
 						<button
 							onClick={toggleCart}
-							className="absolute top-1/2 left-6 p-2 rounded-md -translate-y-1/2"
+							className="absolute top-1/2 left-3 md:left-6 p-2 rounded-md -translate-y-1/2"
 						>
 							<LeftArrow />
 						</button>

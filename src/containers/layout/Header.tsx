@@ -4,6 +4,7 @@ import FavouriteIcon from "../../assets/icons/FavouriteIcon";
 import PersonIcon from "../../assets/icons/PersonIcon";
 import ActiveLink from "../../components/ActiveLink";
 import { CartContext, CartProductType } from "../../contexts/Cart/CartProvider";
+import Link from "next/link";
 
 const navLinks = [
 	{
@@ -34,10 +35,13 @@ const Header = () => {
 	return (
 		<header className="fixed top-0 w-full h-[70px] px-5 lg:px-10 z-50 flex justify-between items-center transition-all ease-in-out duration-300 text-gray-3a bg-white border-b-2 border-b-neutral-100">
 			<div className="flex justify-between items-center">
-				<div className="mr-3 lg:mr-5 text-2xl font-lekton font-semibold tracking-tight cursor-pointer">
+				<Link
+					href="/"
+					className="mr-3 lg:mr-5 text-2xl font-lekton font-semibold tracking-tight cursor-pointer"
+				>
 					Store.
-				</div>
-				<div className=" ml-3 lg:ml-8 flex justify-center items-centertext-gray-3a">
+				</Link>
+				<div className="hidden ml-3 lg:ml-8 md:flex justify-center items-centertext-gray-3a">
 					{navLinks.map((navLink, index) => (
 						<ActiveLink
 							key={index}

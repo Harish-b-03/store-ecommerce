@@ -34,25 +34,25 @@ const CategoriesList: {
 
 const Categories = () => {
 	return (
-		<div className="my-14 h-[300px]">
-			<div className="px-5 text-xl font-bold text-black tracking-wider">
+		<div className="my-14 h-fit lg:h-[300px]">
+			<div className="px-2 md:px-5  text-xl font-bold text-black tracking-wider">
 				Shop by Category
 			</div>
 
-			<div className="w-full my-10 pb-4 flex justify-center items-center relative">
-				<div className="w-full h-fit max-w-5xl flex flex-row justify-between items-center">
+			<div className="w-full my-5 md:my-10 pb-4 flex justify-center items-center relative">
+				<div className="md:px-10 lg:px-0 w-full h-fit max-w-5xl flex flex-wrap md:flex-row justify-center md:justify-between items-center">
 					{CategoriesList.map((item, index) => {
 						return (
 							<Link
 								key={index}
 								href={`/product/category/${item.link}`}
-								className="w-fit h-fit"
+								className="mx-3 lg:mx-0 my-4 lg:my-0 w-fit h-fit"
 							>
 								<div
 									key={item.title}
-									className="w-[200px] h-[220px] bg-slate-300 cursor-pointer relative text-2xl text-[rgba(0,0,0,0.7)] font-bold tracking-wide hover:text-[rgba(0,0,0,1)] hover:bg-slate-400 hover:tracking-wider transition-all overflow-hidden"
+									className=" w-[300px] md:w-[200px] md:h-[220px] bg-slate-300 cursor-pointer relative text-2xl text-black/70 md:text-[rgba(0,0,0,0.7)] font-bold tracking-wide hover:text-[rgba(0,0,0,1)] hover:bg-slate-400 hover:tracking-wider transition-all overflow-hidden rounded-md border border-gray-300 md:rounded-none md:border-0"
 								>
-									<div className="w-[200px] h-[220px] mix-blend-lighten relative">
+									<div className="w-[300px] h-[150px] md:w-[200px] md:h-[220px] mix-blend-lighten relative">
 										<Image
 											src={item.image}
 											alt={item.title}

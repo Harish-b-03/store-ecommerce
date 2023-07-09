@@ -13,8 +13,8 @@ const BestSellers: React.FC<BestSellersProps> = ({ products }) => {
 				Best Sellers
 			</div>
 
-			<div className="mt-10 w-full h-fit flex flex-col justify-center items-center">
-				<div className="w-full max-w-5xl overflow-scroll flex justify-between items-center">
+			<div className="mt-5 md:mt-10 w-full h-fit flex flex-col justify-center items-center">
+				<div className="w-full max-w-5xl overflow-scroll scrollbar-hide flex justify-between items-center">
 					{products.jewelery.map((product) => {
 						return (
 							<div key={product.id}>
@@ -23,7 +23,7 @@ const BestSellers: React.FC<BestSellersProps> = ({ products }) => {
 						);
 					})}
 				</div>
-				<div className="w-full max-w-5xl overflow-scroll flex justify-between items-center">
+				<div className="w-full max-w-5xl overflow-scroll scrollbar-hide flex justify-between items-center">
 					{products.mensClothing.map((product) => {
 						return (
 							<div key={product.id} className="">
@@ -32,7 +32,7 @@ const BestSellers: React.FC<BestSellersProps> = ({ products }) => {
 						);
 					})}
 				</div>
-				<div className="w-full max-w-5xl overflow-scroll flex justify-between items-center">
+				<div className="w-full max-w-5xl overflow-scroll scrollbar-hide flex justify-between items-center">
 					{products.womensClothing.map((product) => {
 						return (
 							<div key={product.id} className="">
