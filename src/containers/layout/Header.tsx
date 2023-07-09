@@ -5,6 +5,21 @@ import PersonIcon from "../../assets/icons/PersonIcon";
 import ActiveLink from "../../components/ActiveLink";
 import { CartContext, CartProductType } from "../../contexts/Cart/CartProvider";
 
+const navLinks = [
+	{
+		name: "Home",
+		link: "/",
+	},
+	{
+		name: "Shop",
+		link: "/product",
+	},
+	{
+		name: "About",
+		link: "/about",
+	},
+];
+
 const Header = () => {
 	const { items, toggleCart } = useContext(CartContext);
 	const [totalItems, setTotalItems] = useState(items.length);
@@ -23,32 +38,20 @@ const Header = () => {
 					Store.
 				</div>
 				<div className=" ml-3 lg:ml-8 flex justify-center items-centertext-gray-3a">
-					<ActiveLink
-						href="/"
-						activeClassName="text-violet-500 font-semibold"
-					>
-						<div className="w-[60px] md:w-[70px] lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal hover:font-semibold hover:text-violet-500">
-							Home
-						</div>
-					</ActiveLink>
-					<ActiveLink
-						href="/product"
-						activeClassName="text-violet-500 font-semibold"
-					>
-						<div className="w-[60px] md:w-[70px] lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal hover:font-semibold hover:text-violet-500">
-							Shop
-						</div>
-					</ActiveLink>
-					<ActiveLink
-						href="/about"
-						activeClassName="text-violet-500 font-semibold"
-					>
-						<div className="w-[60px] md:w-[70px] lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal  hover:font-semibold hover:text-violet-500">
-							About
-						</div>
-					</ActiveLink>
+					{navLinks.map((navLink, index) => (
+						<ActiveLink
+							key={index}
+							href={navLink.link}
+							activeClassName="text-violet-500 font-semibold"
+						>
+							<div className="w-[60px] md:w-[70px] lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal hover:font-semibold hover:text-violet-500">
+								{navLink.name}
+							</div>
+						</ActiveLink>
+					))}
 					<a
 						href="https://medium.com/@harishbalaji369"
+						target="_blank"
 						className="hover:text-violet-500 hover:font-semibold"
 					>
 						<div className="w-[60px] md:w-[70px] lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal hover:font-semibold hover:text-violet-500">
