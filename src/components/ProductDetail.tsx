@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../contexts/Cart/CartProvider";
 import { ProductType } from "../pages";
 import StarIcon from "./icons/StarIcon";
+import BuyNowButton from "./BuyNowButton";
 
 const ProductDetail = ({ product }: { product: ProductType }) => {
 	const { addItem, toggleCart } = useContext(CartContext);
@@ -37,15 +38,10 @@ const ProductDetail = ({ product }: { product: ProductType }) => {
 								? setquantity((quantity) => quantity - 1)
 								: setquantity(1);
 						}}
-						className="w-[40px] h-[40px] text-xl flex justify-center items-center border-[1px] border-gray bg-white"
+						disabled={quantity - 1 <= 0}
+						className="w-[40px] h-[40px] text-xl flex justify-center items-center border-[1px] border-gray bg-white  text-black disabled:text-gray-300 cursor-pointer disabled:cursor-default"
 					>
-						<span
-							className={
-								quantity === 1 ? "text-gray" : "text-black"
-							}
-						>
-							-
-						</span>
+						<span>-</span>
 					</button>
 					<div className="w-max min-w-[40px] h-[40px] font-semibold text-lg flex justify-center items-center border-y-[1px] border-y-gray">
 						<span className="mx-2">{quantity}</span>
@@ -67,15 +63,7 @@ const ProductDetail = ({ product }: { product: ProductType }) => {
 				>
 					Add to Cart
 				</button>
-				<button
-					onClick={() => {
-						addItem(product, quantity);
-						toggleCart();
-					}}
-					className="w-5/12 h-[50px] mr-5 font-semibold text-white bg-violet-500 border-2 border-violet-500 rounded-md"
-				>
-					Buy Now
-				</button>
+				<BuyNowButton product={product} quantity={quantity} />
 			</div>
 		</div>
 	);

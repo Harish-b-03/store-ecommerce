@@ -7,11 +7,11 @@ import { useRouter } from "next/router";
 import { GET_BY_PRODUCT_ID } from "../../../constants";
 import ProductDetail from "../../../components/ProductDetail";
 
-const index: React.FC<{
+const ProductDetailPage: React.FC<{
 	product: ProductType;
 }> = ({ product }) => {
+	const router = useRouter();
 	if (product === null) {
-		const router = useRouter();
 		router.push("/");
 	}
 	const [focusImage, setfocusImage] = useState(product.image); // ToDo: make it to handle if it has other than one image
@@ -37,7 +37,7 @@ const index: React.FC<{
 	);
 };
 
-export default index;
+export default ProductDetailPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const paths = ["1", "2", "3", "4", "5"].map((id) => ({
