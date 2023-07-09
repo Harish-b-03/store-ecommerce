@@ -56,6 +56,7 @@ const Header = () => {
 					<a
 						href="https://medium.com/@harishbalaji369"
 						target="_blank"
+                        rel="noreferrer" 
 						className="hover:text-violet-500 hover:font-semibold"
 					>
 						<div className="w-[60px] md:w-[70px] lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal hover:font-semibold hover:text-violet-500">
