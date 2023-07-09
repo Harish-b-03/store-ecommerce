@@ -26,8 +26,8 @@ export const CartProvider = ({ children }: any) => {
 		dispatch({ type: "ADD_ITEM", payload: { ...item, quantity } });
 	};
 
-	const removeItemHandler = (id: CartProductType["id"]) => {
-		dispatch({ type: "REMOVE_ITEM", payload: { id: id } });
+	const removeItemHandler = (item: CartProductType) => {
+		dispatch({ type: "REMOVE_ITEM", payload: { id: item.id } });
 	};
 
 	const toggleCartHandler = () => {
@@ -36,6 +36,10 @@ export const CartProvider = ({ children }: any) => {
 
 	const buyItemHandler = (item: ProductType) => {
 		dispatch({ type: "BUY_ITEM", payload: { ...item, quantity: 1 } });
+	};
+
+	const deleteItemHandler = (item: ProductType) => {
+		dispatch({ type: "DELETE_ITEM", payload: { id: item.id } });
 	};
 
 	useEffect(() => {
@@ -52,6 +56,7 @@ export const CartProvider = ({ children }: any) => {
 				removeItem: removeItemHandler,
 				toggleCart: toggleCartHandler,
 				buyItem: buyItemHandler,
+				deleteItem: deleteItemHandler,
 			}}
 		>
 			{children}

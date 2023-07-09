@@ -53,6 +53,23 @@ const removeItem = (state: CartStateType, action: any) => {
 	}
 };
 
+const deleteItem = (state: CartStateType, action: any) => {
+	const cartItem = state.items.filter(
+		(item) => item.id === action.payload.id
+	)[0];
+	if (cartItem !== undefined) {
+		const restItems = state.items.filter(
+			(item) => item.id !== action.payload.id
+		);
+		return {
+			...state,
+			items: [...restItems],
+		};
+	} else {
+		return state;
+	}
+};
+
 export const reducer = (state: CartStateType, action: any) => {
 	switch (action.type) {
 		case "ADD_ITEM":
@@ -69,6 +86,8 @@ export const reducer = (state: CartStateType, action: any) => {
 				...addItem(state, action),
 				isOpen: true,
 			};
+		case "DELETE_ITEM":
+			return deleteItem(state, action);
 
 		default:
 			throw new Error(`Unknown action: ${action.type}`);

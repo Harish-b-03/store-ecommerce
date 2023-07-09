@@ -1,11 +1,20 @@
-import { CartProductType } from "../contexts/Cart/CartProvider";
+import { useContext, useState } from "react";
+import { CartContext, CartProductType } from "../contexts/Cart/CartProvider";
 import CartQuantity from "./CartQuantity";
+import TrashIcon from "./icons/TrashIcon";
 
 const CartCard: React.FC<{
 	product: CartProductType;
 }> = ({ product }) => {
+	const [showDeleteIcon, setShowDeleteIcon] = useState(false);
+	const { deleteItem } = useContext(CartContext);
+
 	return (
-		<div className="my-2 mx-1 w-full max-w-md h-fit flex justify-center items-center">
+		<div
+			onMouseEnter={() => setShowDeleteIcon(true)}
+			onMouseLeave={() => setShowDeleteIcon(false)}
+			className="relative my-2 mx-1 w-full max-w-md h-fit flex justify-center items-center"
+		>
 			<div className="w-1/3 max-w-[100px] p-3 ">
 				<img
 					src={product.image}
@@ -35,6 +44,14 @@ const CartCard: React.FC<{
 					</span>
 				</div>
 			</div>
+			<button
+				className={`absolute top-4 right-2 ${
+					showDeleteIcon ? "" : "opacity-0 pointer-events-none"
+				} text-gray-600 hover:text-black transition-all duration-300`}
+				onClick={() => deleteItem(product)}
+			>
+				<TrashIcon />
+			</button>
 		</div>
 	);
 };

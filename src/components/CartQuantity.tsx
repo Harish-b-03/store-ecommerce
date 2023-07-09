@@ -12,7 +12,7 @@ const CartQuantity = ({ product }: { product: CartProductType }) => {
 			<div className="ml-1 flex">
 				<button
 					onClick={() => {
-						product.quantity - 1 > 0 ? removeItem(product.id) : "";
+						product.quantity - 1 > 0 ? removeItem(product) : "";
 					}}
 					disabled={product.quantity - 1 <= 0}
 					className="w-[30px] h-[30px] flex justify-center items-center border-[1px] border-gray bg-white text-black disabled:text-gray-300 cursor-pointer disabled:cursor-default"
