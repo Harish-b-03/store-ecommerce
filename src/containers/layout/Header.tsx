@@ -13,10 +13,10 @@ const navLinks = [
 		name: "Home",
 		link: "/",
 	},
-	{
-		name: "Shop",
-		link: "/product",
-	},
+	// {
+	// 	name: "Shop",
+	// 	link: "/product",
+	// },
 	{
 		name: "About",
 		link: "/about",
@@ -32,7 +32,6 @@ const Header = () => {
 	);
 
 	useEffect(() => {
-		let total = 0;
 		setTotalFavouriteItems(favouriteItems.length);
 	}, [favouriteItems]);
 
@@ -92,13 +91,13 @@ const Header = () => {
 				</div>
 			</div>
 			<div className="flex ">
-				<div className="ml-3 pt-1.5 flex justify-center items-center cursor-pointer text-gray-3a rounded-lg">
+				{/* <div className="ml-3 pt-1.5 flex justify-center items-center cursor-pointer text-gray-3a rounded-lg">
 					<PersonIcon
 						width="26px"
 						height="24px"
 						className="m-1.5 fill-gray-500 stroke-gray-500 hover:fill-violet-700 hover:stroke-violet-700"
 					/>
-				</div>
+				</div> */}
 				<button
 					onClick={() => toggleFavourite()}
 					className="relative ml-3 flex justify-center items-center cursor-pointer text-gray-3a rounded-lg"
