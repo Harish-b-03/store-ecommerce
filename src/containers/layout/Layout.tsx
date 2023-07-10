@@ -2,6 +2,7 @@ import Head from "next/head";
 import Footer from "./Footer";
 import Header from "./Header";
 import Cart from "../../components/Cart";
+import Favourite from "../../components/Favourites";
 
 const Layout = (props: any) => {
 	return (
@@ -35,6 +36,7 @@ const Layout = (props: any) => {
 				</div>
 				<Footer />
 				<Cart />
+				<Favourite />
 			</main>
 		</div>
 	);

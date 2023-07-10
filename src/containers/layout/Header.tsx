@@ -5,6 +5,8 @@ import PersonIcon from "../../assets/icons/PersonIcon";
 import ActiveLink from "../../components/ActiveLink";
 import { CartContext, CartProductType } from "../../contexts/Cart/CartProvider";
 import Link from "next/link";
+import { FavouriteContext } from "../../contexts/Favourite/FavouriteProvider";
+import { ProductType } from "../../pages";
 
 const navLinks = [
 	{
@@ -23,7 +25,17 @@ const navLinks = [
 
 const Header = () => {
 	const { items, toggleCart } = useContext(CartContext);
+	const { favouriteItems, toggleFavourite } = useContext(FavouriteContext);
 	const [totalItems, setTotalItems] = useState(items.length);
+	const [totalFavouriteItems, setTotalFavouriteItems] = useState(
+		favouriteItems.length
+	);
+
+	useEffect(() => {
+		let total = 0;
+		setTotalFavouriteItems(favouriteItems.length);
+	}, [favouriteItems]);
+
 	useEffect(() => {
 		let total = 0;
 		items.map((item: CartProductType) => {
@@ -56,7 +68,7 @@ const Header = () => {
 					<a
 						href="https://medium.com/@harishbalaji369"
 						target="_blank"
-                        rel="noreferrer" 
+						rel="noreferrer"
 						className="hover:text-violet-500 hover:font-semibold"
 					>
 						<div className="w-[60px] md:w-[70px] lg:mr-0.5 tracking-wide flex justify-center items-center cursor-pointer hover:tracking-normal hover:font-semibold hover:text-violet-500">
@@ -87,13 +99,21 @@ const Header = () => {
 						className="m-1.5 fill-gray-500 stroke-gray-500 hover:fill-violet-700 hover:stroke-violet-700"
 					/>
 				</div>
-				<div className="ml-3 flex justify-center items-center cursor-pointer text-gray-3a rounded-lg">
+				<button
+					onClick={() => toggleFavourite()}
+					className="relative ml-3 flex justify-center items-center cursor-pointer text-gray-3a rounded-lg"
+				>
 					<FavouriteIcon
 						width="26px"
 						height="26px"
 						className="m-1.5 fill-gray-500 hover:fill-violet-700"
 					/>
-				</div>
+					{favouriteItems.length > 0 && (
+						<div className="absolute top-0 right-2 translate-x-1/2 w-5 min-w-fit h-5 p-1 text-xs flex justify-center items-center font-semibold bg-violet-700 text-white rounded-full">
+							{totalFavouriteItems}
+						</div>
+					)}
+				</button>
 				<button
 					onClick={() => toggleCart()}
 					className="relative ml-3 pt-0.5 w-fit h-fit flex justify-center items-center cursor-pointer text-gray-3a rounded-lg text-gray-500 hover:text-violet-700 hover:stroke-[5px]"
