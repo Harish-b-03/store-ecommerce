@@ -13,14 +13,14 @@ const navLinks = [
 		name: "Home",
 		link: "/",
 	},
-	// {
-	// 	name: "Shop",
-	// 	link: "/product",
-	// },
 	{
-		name: "About",
-		link: "/about",
+		name: "Shop",
+		link: "/product",
 	},
+	// {
+	// 	name: "About",
+	// 	link: "/about",
+	// },
 ];
 
 const Header = () => {
