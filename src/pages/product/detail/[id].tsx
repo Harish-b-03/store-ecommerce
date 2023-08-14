@@ -8,61 +8,61 @@ import { GET_BY_PRODUCT_ID } from "../../../constants";
 import ProductDetail from "../../../components/ProductDetail";
 
 const ProductDetailPage: React.FC<{
-	product: ProductType;
+    product: ProductType;
 }> = ({ product }) => {
-	const router = useRouter();
-	if (product === null) {
-		router.push("/");
-	}
-	const [focusImage, setfocusImage] = useState(product.image); // ToDo: make it to handle if it has other than one image
+    const router = useRouter();
+    if (product === null) {
+        router.push("/");
+    }
+    const [focusImage, setfocusImage] = useState(product.image); // ToDo: make it to handle if it has other than one image
 
-	return (
-		<Layout>
-			<div className="w-full h-fit flex justify-center items-center">
-				<div className="my-10 md:my-20 w-full h-full max-w-6xl flex flex-col md:flex-row justify-between items-start">
-					<div className="w-full md:w-[45%] h-full flex flex-col justify-center items-center">
-						<div className="relative p-10 w-full h-[400px] flex justify-center items-center rounded-2xl bg-slate-100 overflow-hidden">
-							<img
-								src={focusImage}
-								alt="Product Thumbnail"
-								className="h-full object-contain mix-blend-multiply"
-							/>
-						</div>
-					</div>
+    return (
+        <Layout>
+            <div className="w-full h-fit flex justify-center items-center">
+                <div className="my-10 md:my-20 w-full h-full max-w-6xl flex flex-col md:flex-row justify-between items-start">
+                    <div className="w-full md:w-[45%] h-full flex flex-col justify-center items-center">
+                        <div className="relative p-10 w-full h-[400px] flex justify-center items-center rounded-2xl bg-slate-100 overflow-hidden">
+                            <img
+                                src={focusImage}
+                                alt="Product Thumbnail"
+                                className="h-full object-contain mix-blend-multiply"
+                            />
+                        </div>
+                    </div>
 
-					<ProductDetail product={product} />
-				</div>
-			</div>
-		</Layout>
-	);
+                    <ProductDetail product={product} />
+                </div>
+            </div>
+        </Layout>
+    );
 };
 
 export default ProductDetailPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = ["1", "2", "3", "4", "5"].map((id) => ({
-		params: { id: id },
-	}));
+    const paths = ["1", "2", "3", "4", "5"].map((id) => ({
+        params: { id: id },
+    }));
 
-	return {
-		paths,
-		fallback: "blocking",
-	};
+    return {
+        paths,
+        fallback: "blocking",
+    };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-	if (context.params !== undefined) {
-		const res_product = await fetch(
-			`${GET_BY_PRODUCT_ID}/${context.params.id}`
-		);
-		const product: ProductType = await res_product.json();
+    if (context.params !== undefined) {
+        const res_product = await fetch(
+            `${GET_BY_PRODUCT_ID}/${context.params.id}`,
+        );
+        const product: ProductType = await res_product.json();
 
-		return {
-			props: { product: product },
-		};
-	}
+        return {
+            props: { product: product },
+        };
+    }
 
-	return {
-		props: { product: null },
-	};
+    return {
+        props: { product: null },
+    };
 };
