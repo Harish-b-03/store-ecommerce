@@ -6,7 +6,7 @@ const HeartIcon = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="rgb(139,92,246)"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="rgb(139,92,246)"
             className="w-6 h-6"
         >

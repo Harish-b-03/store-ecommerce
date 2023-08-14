@@ -28,7 +28,7 @@ const Header = () => {
     const { favouriteItems, toggleFavourite } = useContext(FavouriteContext);
     const [totalItems, setTotalItems] = useState(items.length);
     const [totalFavouriteItems, setTotalFavouriteItems] = useState(
-        favouriteItems.length,
+        favouriteItems.length
     );
 
     useEffect(() => {
@@ -103,9 +103,9 @@ const Header = () => {
                     className="relative ml-3 flex justify-center items-center cursor-pointer text-gray-3a rounded-lg"
                 >
                     <FavouriteIcon
-                        width="26px"
+                        width="24px"
                         height="26px"
-                        className="m-1.5 fill-gray-500 hover:fill-violet-700"
+                        className="m-1.5 fill-none stroke-2 stroke-gray-500 hover:stroke-violet-700"
                     />
                     {favouriteItems.length > 0 && (
                         <div className="absolute top-0 right-2 translate-x-1/2 w-5 min-w-fit h-5 p-1 text-xs flex justify-center items-center font-semibold bg-violet-700 text-white rounded-full">

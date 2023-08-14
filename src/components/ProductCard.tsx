@@ -8,7 +8,7 @@ const ProductCard: React.FC<{
 }> = ({ product }) => {
     const [showOptions, setShowOptions] = useState(false);
     const productDetailURL = `/product/detail/${product.id}`;
-
+    
     return (
         <div
             onMouseEnter={() => setShowOptions(true)}

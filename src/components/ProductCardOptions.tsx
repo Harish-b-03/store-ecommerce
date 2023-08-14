@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../contexts/Cart/CartProvider";
 import { ProductType } from "../pages";
 import PlusIcon from "./icons/PlusIcon";
@@ -11,7 +11,21 @@ const ProductCardOptions: React.FC<{ product: ProductType; show: boolean }> = ({
     product,
 }) => {
     const { addItem } = useContext(CartContext);
-    const { addFavouriteItem } = useContext(FavouriteContext);
+    const { addFavouriteItem, favouriteItems, removeFavouriteItem } =
+        useContext(FavouriteContext);
+    const [isFavourite, setIsFavourite] = useState(false);
+
+    useEffect(() => {
+        const res = favouriteItems.filter(
+            (item: ProductType) => item.id === product.id
+        )[0];
+        if (res !== undefined) {
+            console.log("got it");
+            setIsFavourite(true);
+        } else {
+            setIsFavourite(false);
+        }
+    }, [isFavourite, favouriteItems]);
 
     return (
         <div
@@ -32,13 +46,21 @@ const ProductCardOptions: React.FC<{ product: ProductType; show: boolean }> = ({
             <div className="px-1 py-4 space-y-2 flex flex-col justify-center items-center bg-gray-200 bg-opacity-40 rounded-tl-md overflow-hidden transition-all duration-300">
                 <button
                     onClick={() => {
-                        addFavouriteItem(product);
+                        if (isFavourite) {
+                            removeFavouriteItem(product);
+                        } else {
+                            addFavouriteItem(product);
+                        }
                     }}
                 >
                     <FavouriteIcon
-                        width="26px"
+                        width="24px"
                         height="26px"
-                        className="m-1.5 fill-gray-500 hover:fill-violet-700"
+                        className={`m-1.5 stroke-[1.5px] ${
+                            isFavourite
+                                ? "stroke-violet-500 fill-violet-500"
+                                : "stroke-gray-500 fill-none"
+                        } `}
                     />
                 </button>
                 <div className="text-xs flex justify-center items-center">

@@ -9,7 +9,7 @@ const ProductDetail = ({ product }: { product: ProductType }) => {
     const [quantity, setquantity] = useState(1);
 
     return (
-        <div className="mt-10 md:mt-0 px-5 md:px-0 w-full md:w-[45%] h-fit flex flex-col justify-evenly items-center">
+        <div className="mt-10 md:mt-0 px-5 md:px-0 w-full md:w-[45%] h-fit flex flex-col justify-evenly items-center md:items-start">
             <div className="md:w-[90%] text-2xl text-center md:text-left font-semibold">
                 {product.title}
             </div>
