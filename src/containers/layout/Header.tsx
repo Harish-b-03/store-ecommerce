@@ -17,10 +17,10 @@ const navLinks = [
 		name: "Shop",
 		link: "/product",
 	},
-	// {
-	// 	name: "About",
-	// 	link: "/about",
-	// },
+	{
+		name: "About",
+		link: "/about",
+	},
 ];
 
 const Header = () => {
