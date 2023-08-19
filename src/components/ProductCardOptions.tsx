@@ -20,7 +20,6 @@ const ProductCardOptions: React.FC<{ product: ProductType; show: boolean }> = ({
             (item: ProductType) => item.id === product.id
         )[0];
         if (res !== undefined) {
-            console.log("got it");
             setIsFavourite(true);
         } else {
             setIsFavourite(false);
