@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext, CartProductType } from "../contexts/Cart/CartProvider";
+import Modal from "../containers/modal/Modal";
+import Message from "./Message";
 
 const CartFooter = () => {
     const { items } = useContext(CartContext);
     const [Amount, setAmount] = useState<Number>(0);
+    const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
         let sum = 0;
@@ -29,12 +32,20 @@ const CartFooter = () => {
                 </div>
                 <button
                     disabled={items.length > 0 ? false : true}
-                    onClick={() => {}}
+                    onClick={() => {
+                        setShowMessage(true);
+                    }}
                     className={`w-full h-10 text-white font-semibold bg-violet-500 rounded-md cursor-pointer disabled:opacity-0 disabled:pointer-events-none hover:bg-violet-700 transition-all duration-300 shadow-md shadow-gray-300`}
                 >
                     Buy Now
                 </button>
             </div>
+            <Modal
+                open={showMessage}
+                onCloseModal={() => setShowMessage(false)}
+            >
+                <Message close={() => setShowMessage(false)} />
+            </Modal>
         </div>
     );
 };
